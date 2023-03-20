@@ -1,7 +1,3 @@
-//
-// Created by phavo on 3/20/2023.
-//
-
 #include "User.h"
 
 

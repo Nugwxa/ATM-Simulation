@@ -1,7 +1,3 @@
-//
-// Created by phavo on 3/20/2023.
-//
-
 #include <string>
 #ifndef ATM_SIMULATION_USER_H
 #define ATM_SIMULATION_USER_H
