@@ -3,7 +3,6 @@
 // and exit the application.
 
 #include <iostream>
-#include <iomanip>
 #include <ctime>
 
 // User Class Header and Implementation Files
@@ -14,6 +13,10 @@
 #include "displayFunctions.h"
 #include "displayFunctions.cpp"
 
+// Header and Implementation File for transfer functions
+//#include "transferFunctions.h"
+#include "transferFunctions.cpp"
+
 // Class to represent a user account
 class User;
 
@@ -22,6 +25,9 @@ void showMenu();
 
 // Function that displays the transfer menu options to the user
 void showTransferMenu(User user1, User user2, User user3);
+
+// Function that handles money transfer
+void transferTo(User receivingUser, double balance);
 
 
 int main(){
@@ -43,7 +49,7 @@ int main(){
     //std::cout<< user3.userName;
 
     int option = 0;
-    double balance = 1085.62;
+    double activeUserbalance = 1085.62;
 
     // Main loop
     do{
@@ -62,7 +68,7 @@ int main(){
             case 1:
                 // Display the user's balance
             {
-                std::cout<<"Your available balance is $" << balance <<std::endl;
+                std::cout<<"Your available balance is $" << activeUserbalance <<std::endl;
                 break;
             }
 
@@ -83,15 +89,16 @@ int main(){
                         break;
                     }
 
-                    if(withdrawAmount<=balance){
-                        balance -= withdrawAmount;
+                    // COME BACK HERE!!!!!!!!!!!!
+                    if(withdrawAmount<=activeUserbalance){
+                        activeUserbalance -= withdrawAmount;
                         system("cls");
                         std::cout<< "Successfully withdrew $" << withdrawAmount<<std::endl;
                         correctWithdrawal = true;
 
                     }else{
                         std::cout<< "You don't have up to $" << withdrawAmount<<"."<<std::endl;
-                        std::cout<< "Your balance is " << balance<<"."<<std::endl;
+                        std::cout<< "Your balance is " << activeUserbalance<<"."<<std::endl;
                         std::cout<< "Enter '-1' to return to menu"<<std::endl;
                     }
                 }
@@ -120,7 +127,7 @@ int main(){
                         std::cout<< "Invalid deposit! The max amount you can deposit at a time is $" <<MAX_DEPOSIT<<"."<<std::endl;
                         std::cout<< "Enter '-1' to return to menu"<<std::endl;
                     } else{
-                        balance += depositAmount;
+                        activeUserbalance += depositAmount;
                         system("cls");// Clear the screen for better user experience
                         std::cout<< "Successfully deposited $" << depositAmount<<std::endl;
                         correctDeposit = true;
@@ -146,133 +153,19 @@ int main(){
                     case 1:
                     {
                         //User 1
-                        while(transferEnded == false){
-                            double transferAmount;
-                            const int uPin = 700;
-                            int userPass; // user's transfer password (User Input)
-                            int transPass; // receipient's receiving password (User Input)
-
-                            // Check if account can receive transfers
-                            if(user1.accountType == 'A'){
-                                std::cout<< "Transfer to "<< user1.userName<<std::endl;
-                                std::cout<< "Enter amount you want to transfer: ";
-                                std::cin>> transferAmount;
-
-                                // Check if balance is sufficient for transfer
-                                if(transferAmount > balance){
-                                    std::cout<< "You don't have up to " << transferAmount<<std::endl;
-                                    transferEnded = true;
-                                    break;
-                                }
-
-                                std::cout<< "Enter your transfer pin";
-                                std::cin>> userPass;
-
-                                std::cout<< "Enter "<< user1.userName <<"'s receiving pin";
-                                std::cin>> transPass;
-
-                                // Check if passwords are correct;
-                                if( (userPass == uPin) && (transPass == user1.transferPin))
-                                {
-                                    std::cout<<"Successfully transfered $"<< transferAmount<<" to "<< user1.userName;
-                                    balance -= transferAmount;
-                                    user1.userBalance += transferAmount;
-                                    transferEnded =true; // Exit the loop;
-                                }
-
-                            } else {
-                                std::cout<< user1.userName <<" has a  type "<< user1.accountType<< " account so they cant receive money."<<std::endl;
-                                transferEnded = true; // Exit the loop;
-                                break;
-                            }
-                        }
+                        transferTo(user1, activeUserbalance);
                         break;
                     }
                     case 2:
                     {
                         // User 2
-                        while(transferEnded == false){
-                            double transferAmount;
-                            const int uPin = 700;
-                            int userPass; // user's transfer password (User Input)
-                            int transPass; // receipient's receiving password (User Input)
-
-                            if(user2.accountType == 'A'){
-                                std::cout<< "Transfer to "<< user2.userName<<std::endl;
-                                std::cout<< "Enter amount you want to transfer: ";
-                                std::cin>> transferAmount;
-
-                                // Check if balance is sufficient for transfer
-                                if(transferAmount > balance){
-                                    std::cout<< "You don't have up to " << transferAmount<<std::endl;
-                                    transferEnded = true;
-                                    break;
-                                }
-
-                                std::cout<< "Enter your transfer pin: ";
-                                std::cin>> userPass;
-
-                                std::cout<< "Enter "<< user2.userName <<"'s receiving pin: ";
-                                std::cin>> transPass;
-
-                                // Check if the passwords are correct
-                                if( (userPass == uPin) && (transPass == user2.transferPin))
-                                {
-                                    std::cout<<"Successfully transfered $"<< transferAmount<<" to "<< user2.userName<<std::endl;
-                                    balance -= transferAmount;
-                                    user2.userBalance += transferAmount;
-                                    transferEnded =true; // Exit the loop
-                                }
-
-                            } else {
-                                std::cout<< user2.userName <<" has a  type "<< user2.accountType<< " account so they cant receive money."<<std::endl;
-                                break; //Exit the Loop
-                            }
-                        }
+                        transferTo(user2, activeUserbalance);
                         break;
                     }
                     case 3:
                     {
                         // User 3
-                        while(transferEnded == false){
-                            double transferAmount;
-                            const int uPin = 700;
-                            int userPass; // user's transfer password (User Input)
-                            int transPass; // receipient's receiving password (User Input)
-
-                            // Check if account can receive transfers
-                            if(user3.accountType == 'A'){
-                                std::cout<< "Transfer to "<< user3.userName<<std::endl;
-                                std::cout<< "Enter amount you want to transfer: ";
-                                std::cin>> transferAmount;
-
-                                // Check if balance is sufficient for transfer
-                                if(transferAmount > balance){
-                                    std::cout<< "You don't have up to " << transferAmount<<std::endl;
-                                    transferEnded = true;
-                                    break;
-                                }
-
-                                std::cout<< "Enter your transfer pin: ";
-                                std::cin>> userPass;
-
-                                std::cout<< "Enter "<< user3.userName <<"'s receiving pin: ";
-                                std::cin>> transPass;
-
-                                // Check if passwords are correct;
-                                if( (userPass == uPin) && (transPass == user3.transferPin))
-                                {
-                                    std::cout<<"Successfully transfered $"<< transferAmount<<" to "<< user3.userName<<std::endl;
-                                    balance -= transferAmount;
-                                    user3.userBalance += transferAmount;
-                                    transferEnded =true; // Exit the loop
-                                }
-
-                            } else {
-                                std::cout<< user3.userName <<" has a  type "<< user3.accountType<< " account so they cant receive money."<<std::endl;
-                                break;
-                            }
-                        }
+                        transferTo(user3, activeUserbalance);
                         break;
                     }
                     case 4:
@@ -296,4 +189,3 @@ int main(){
     // End of program
     return 0;
 }
-
