@@ -7,7 +7,7 @@ void transferTo(User receivingUser, double balance){
         double transferAmount;
         const int uPin = 700;
         int userPass; // user's transfer password (User Input)
-        int transPass; // receipient's receiving password (User Input)
+        int transPass; // recipient's receiving password (User Input)
 
         // Check if account can receive transfers
         if(receivingUser.accountType == 'A'){
