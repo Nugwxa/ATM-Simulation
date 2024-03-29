@@ -88,7 +88,7 @@ int main(){
                         system("cls");
                         break;
                     }
-                    
+
                     if(withdrawAmount<=activeUserbalance){
                         activeUserbalance -= withdrawAmount;
                         system("cls");

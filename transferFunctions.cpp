@@ -1,7 +1,7 @@
 #include "transferFunctions.h"
 
 // Function that handles money transfer
-void transferTo(User receivingUser, double balance){
+void transferTo(User& receivingUser, double balance){
     bool transferEnded = false;
     while(!transferEnded){
         double transferAmount;

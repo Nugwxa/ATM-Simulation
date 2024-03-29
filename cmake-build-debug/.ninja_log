@@ -1,0 +1,24 @@
+# ninja log v5
+0	540	7010471411366243	CMakeFiles/ATM_Simulation.dir/main.cpp.obj	4e709b481ea44b6c
+544	815	7010471414060772	ATM_Simulation.exe	f7bfe3f7566ead09
+3	515	7010474657369163	CMakeFiles/ATM_Simulation.dir/main.cpp.obj	4e709b481ea44b6c
+516	671	7010474658887617	ATM_Simulation.exe	f7bfe3f7566ead09
+4	727	7010489386015672	CMakeFiles/ATM_Simulation.dir/main.cpp.obj	4e709b481ea44b6c
+4	747	7010521165948906	CMakeFiles/ATM_Simulation.dir/main.cpp.obj	4e709b481ea44b6c
+5	1088	7010533217645983	CMakeFiles/ATM_Simulation.dir/main.cpp.obj	4e709b481ea44b6c
+1089	1386	7010533220528876	ATM_Simulation.exe	f7bfe3f7566ead09
+4	462	7010566063738365	CMakeFiles/ATM_Simulation.dir/main.cpp.obj	4e709b481ea44b6c
+463	615	7010566065214709	ATM_Simulation.exe	f7bfe3f7566ead09
+5	670	7010585138285796	CMakeFiles/ATM_Simulation.dir/main.cpp.obj	4e709b481ea44b6c
+3	451	7010586574807228	CMakeFiles/ATM_Simulation.dir/main.cpp.obj	4e709b481ea44b6c
+451	591	7010586576152864	ATM_Simulation.exe	f7bfe3f7566ead09
+3	508	7010587483402784	CMakeFiles/ATM_Simulation.dir/main.cpp.obj	4e709b481ea44b6c
+509	647	7010587484758381	ATM_Simulation.exe	f7bfe3f7566ead09
+4	468	7010587815213325	CMakeFiles/ATM_Simulation.dir/main.cpp.obj	4e709b481ea44b6c
+472	606	7010587816534284	ATM_Simulation.exe	f7bfe3f7566ead09
+4	727	7010599621012741	CMakeFiles/ATM_Simulation.dir/main.cpp.obj	4e709b481ea44b6c
+4	541	7010600514308798	CMakeFiles/ATM_Simulation.dir/main.cpp.obj	4e709b481ea44b6c
+4	706	7010600742630574	CMakeFiles/ATM_Simulation.dir/main.cpp.obj	4e709b481ea44b6c
+706	877	7010600744338793	ATM_Simulation.exe	f7bfe3f7566ead09
+5	693	7010600966086749	CMakeFiles/ATM_Simulation.dir/main.cpp.obj	4e709b481ea44b6c
+694	867	7010600967707320	ATM_Simulation.exe	f7bfe3f7566ead09
